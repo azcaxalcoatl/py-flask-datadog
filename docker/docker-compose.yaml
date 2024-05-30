@@ -16,7 +16,7 @@ services:
   liverpool-api-dev:
     container_name: liverpool-api-dev
     restart: always
-    build: ..
+    build: .
     ports:
       - 5000:5000
     environment:
