@@ -1,4 +1,6 @@
-FROM python:3.13.0b1-bullseye
+FROM python:3.9-alpine
+
+RUN apk --update add gcc musl-dev linux-headers
 
 ENV DD_SERVICE="liverpool-api-dev"
 ENV DD_ENV="football-data-dev"
@@ -10,11 +12,11 @@ LABEL com.datadoghq.tags.version="0.0.1"
 
 WORKDIR /app
 
-COPY ../requirements.txt .
+COPY ../python/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY ../python/* .
 
 EXPOSE 5000
 
