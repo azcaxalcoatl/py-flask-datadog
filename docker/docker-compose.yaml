@@ -1,0 +1,23 @@
+version: "3"
+services:
+  datadog:
+    container_name: dd-agent
+    restart: always
+    image: "gcr.io/datadoghq/agent:latest"
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_SITE=datadoghq.com
+      - DD_APM_ENABLED=true
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock:ro 
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+  
+  liverpool-api-dev:
+    container_name: liverpool-api-dev
+    restart: always
+    build: ..
+    ports:
+      - 5000:5000
+    environment:
+      - DD_AGENT_HOST=datadog 
