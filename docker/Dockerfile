@@ -10,11 +10,11 @@ LABEL com.datadoghq.tags.version="0.0.1"
 
 WORKDIR /app
 
-COPY ../requirements.txt .
+COPY requirements.txt ..
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ../ .
+COPY . .
 
 EXPOSE 5000
 
