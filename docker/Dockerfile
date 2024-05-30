@@ -11,13 +11,13 @@ LABEL com.datadoghq.tags.env="football-data-dev"
 LABEL com.datadoghq.tags.version="0.0.1"
 
 WORKDIR /app
-
-COPY ../python/requirements.txt .
+ 
+COPY python/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ../python/* .
+COPY python/* .
 
 EXPOSE 5000
 
-CMD ["ddtrace-run", "python3", "-m", "app.py"]
+CMD ["ddtrace-run", "python3", "app.py"]
