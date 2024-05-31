@@ -1,6 +1,4 @@
-FROM python:3.9-alpine
-
-RUN apk --update add gcc musl-dev linux-headers
+FROM python:3.12-alpine
 
 WORKDIR /app
  
